@@ -176,7 +176,7 @@
 				<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.19041.8" PrivateAssets="all" />
 </ItemGroup>
 <ItemGroup>
-				<ProjectReference Include="..\TaskbarFlyout.Uwp\TaskbarFlyout.Uwp.csproj" />
+				<ProjectReference Include="..\ModernFlyouts.Flyouts\ModernFlyouts.Flyouts.csproj" />
 				<ProjectReference Include="..\TaskbarFlyout.Wpf\TaskbarFlyout.Wpf.csproj">
 								<SkipGetTargetFrameworkProperties>True</SkipGetTargetFrameworkProperties>
 				</ProjectReference>
