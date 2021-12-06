@@ -46,12 +46,12 @@
     <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <AppInstallerUri>https://ModernFlyouts-community.github.io/package.github.io/ModernFlyouts.Package/ModernFlyouts.Package.appinstaller</AppInstallerUri>
-    <EntryPointProjectUniqueName>..\ModernFlyoutsHost\ModernFlyoutsHost.vcxproj</EntryPointProjectUniqueName>
     <AppxSymbolPackageEnabled>True</AppxSymbolPackageEnabled>
   </PropertyGroup>
   <PropertyGroup>
     <AppxBundle>Always</AppxBundle>
     <PackageCertificateKeyFile>ModernFlyouts.Package_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <EntryPointProjectUniqueName>..\ModernFlyouts.WPF\ModernFlyouts.WPF.csproj</EntryPointProjectUniqueName>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -117,13 +117,7 @@
     <None Include="Package.StoreAssociation.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ModernFlyouts.Settings\ModernFlyouts.Settings.csproj" />
-    <ProjectReference Include="..\ModernFlyoutsHost\ModernFlyoutsHost.vcxproj" />
-    <ProjectReference Include="..\ModernFlyouts\ModernFlyouts.csproj">
-      <SkipGetTargetFrameworkProperties>True</SkipGetTargetFrameworkProperties>
-      <PublishProfile>Properties\PublishProfiles\win10-$(Platform).pubxml</PublishProfile>
-    </ProjectReference>
-    <ProjectReference Include="..\ModernFlyoutsBridge\ModernFlyoutsBridge.vcxproj" />
+    <ProjectReference Include="..\ModernFlyouts.WPF\ModernFlyouts.WPF.csproj" />
   </ItemGroup>
   <Target Name="FlattenPackage" BeforeTargets="_ConvertItems">
     <ItemGroup>
@@ -136,15 +130,12 @@
     </ItemGroup>
   </Target>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
-
   <!-- this will ensure to delete the wappublish folder -->
   <!-- otherwise there will be mismatched assemblies for the packaged appx -->
   <!--<Target Name="CleanBetweenPlatforms" AfterTargets="_GenerateAppxPackage">
 	  <RemoveDir Directories="..\src\bin\$(Configuration)" />
   </Target>-->
 </Project>
-
-
 <!--<PropertyGroup> TASKBAR FLYOUT
 				<WapProjPath Condition="'$(WapProjPath)'==''">$(MSBuildExtensionsPath)\Microsoft\DesktopBridge\</WapProjPath>
 </PropertyGroup>

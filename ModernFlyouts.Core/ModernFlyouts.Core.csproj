@@ -3,13 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Platforms>x86;x64</Platforms>
-    <RuntimeIdentifiers>win10-x64;win10-x86;win10-arm64</RuntimeIdentifiers>
+    <RuntimeIdentifiers>win10-x64;win10-x86</RuntimeIdentifiers>
     <UseWPF>true</UseWPF>
 				<LangVersion>preview</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.0" />
+    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.1" />
     <PackageReference Include="NAudio" Version="2.0.1" />
     <PackageReference Include="NPSMLib" Version="0.9.14" />
     <PackageReference Include="System.Drawing.Common" Version="6.0.0-rtm.21508.16" />

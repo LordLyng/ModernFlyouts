@@ -4,11 +4,17 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
+using Windows.Data.Json;
 using System.Windows.Shapes;
+
+using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Interop;
+using ModernFlyouts.Settings.Views;
+using Microsoft.Toolkit.Wpf.UI.XamlHost;
+using ModernFlyouts.Settings.Helpers;
+using ModernFlyouts.Settings;
+using Windows.ApplicationModel.Resources;
 
 namespace ModernFlyouts.WPF
 {
@@ -17,12 +23,81 @@ namespace ModernFlyouts.WPF
     /// </summary>
     public partial class SettingsWindow : Window
     {
+        private static Window inst;
+
+        private bool isOpen = true;
+
         public SettingsWindow()
         {
             InitializeComponent();
+
+            ResourceLoader loader = ResourceLoader.GetForViewIndependentUse();
+            Title = loader.GetString("SettingsWindow_Title");
+          
+        }
+
+        public static void CloseHiddenWindow()
+        {
+            if (inst != null && inst.Visibility == Visibility.Hidden)
+            {
+                inst.Close();
+            }
+        }
+
+        private void WindowsXamlHost_ChildChanged(object sender, EventArgs e)
+        {
+            // If sender is null, it could lead to a NullReferenceException. This might occur on restarting as admin (check https://github.com/microsoft/PowerToys/issues/7393 for details)
+            if (sender == null)
+            {
+                return;
+            }
+
+            // Hook up x:Bind source.
+            WindowsXamlHost windowsXamlHost = sender as WindowsXamlHost;
+            ShellPage shellPage = windowsXamlHost.GetUwpInternalObject() as ShellPage;
+
+
+            // XAML Islands: If the window is open, explicitly force it to be shown to solve the blank dialog issue https://github.com/microsoft/PowerToys/issues/3384
+            if (isOpen)
+            {
+                try
+                {
+                    Show();
+                }
+                catch (InvalidOperationException)
+                {
+                }
+            }
+        }
+
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+            // XAML Islands: If the window is closed while minimized, exit the process. Required to avoid process not terminating issue - https://github.com/microsoft/PowerToys/issues/4430
+            if (WindowState == WindowState.Minimized)
+            {
+                // Run Environment.Exit on a separate task to avoid performance impact
+                System.Threading.Tasks.Task.Run(() => { Environment.Exit(0); });
+            }
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            inst = (Window)sender;
+        }
+
+        private void MainWindow_Activated(object sender, EventArgs e)
+        {
+            if (((Window)sender).Visibility == Visibility.Hidden)
+            {
+                ((Window)sender).Visibility = Visibility.Visible;
+            }
         }
     }
 }
+
+
+
 
 //using System;
 //using System.Windows;

@@ -2,7 +2,9 @@
     x:Class="ModernFlyouts.Settings.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:xaml="using:Microsoft.Toolkit.Win32.UI.XamlHost">
+    xmlns:controls="using:ModernFlyouts.Settings.Controls"
+    xmlns:xaml="using:Microsoft.Toolkit.Win32.UI.XamlHost"
+    xmlns:local="using:ModernFlyouts.Settings">
 
     <Application.Resources>
         <ResourceDictionary>
