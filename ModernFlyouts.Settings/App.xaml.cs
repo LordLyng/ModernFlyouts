@@ -1,4 +1,34 @@
-﻿using System;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.IO;
+//using System.Linq;
+//using System.Runtime.InteropServices.WindowsRuntime;
+//using Windows.ApplicationModel;
+//using Windows.ApplicationModel.Activation;
+//using Windows.Foundation;
+//using Windows.Foundation.Collections;
+//using Windows.UI.Xaml;
+//using Windows.UI.Xaml.Controls;
+//using Windows.UI.Xaml.Controls.Primitives;
+//using Windows.UI.Xaml.Data;
+//using Windows.UI.Xaml.Input;
+//using Windows.UI.Xaml.Media;
+//using Windows.UI.Xaml.Navigation;
+
+
+//namespace ModernFlyouts.Settings
+//{
+//    public sealed partial class App : Microsoft.Toolkit.Win32.UI.XamlHost.XamlApplication
+//    {
+//        public App()
+//        {
+//            this.Initialize();
+//        }
+//    }
+//}
+
+
+using System;
 using System.Globalization;
 using System.Reflection;
 using Microsoft.AppCenter;
@@ -83,11 +113,11 @@ namespace ModernFlyouts.Settings
 }
 
 
-    //namespace ModernFlyouts.Settings
-    //{
-    //    public sealed partial class App : XamlApplication
-    //{
-    //        private Lazy<ActivationService> _activationService;
+//namespace ModernFlyouts.Settings
+//{
+//    public sealed partial class App : XamlApplication
+//{
+//        private Lazy<ActivationService> _activationService;
 
 //        private ActivationService ActivationService
 //        {

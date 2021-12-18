@@ -19,7 +19,6 @@ namespace ModernFlyouts.Settings
             }
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.NamingRules", "SA1310:Field names should not contain underscore", Justification = "Interop naming consistency")]
         public const int SW_HIDE = 0;
     }
 }

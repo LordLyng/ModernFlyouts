@@ -5,12 +5,59 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
 				<Platforms>x86;x64</Platforms>
-				<AssetTargetFallback>uap10.0.18362</AssetTargetFallback>
-
-	  <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
-	  <ApplicationManifest>app.manifest</ApplicationManifest>
-				<!--<StartupObject>TaskbarFlyout.Wpf.Program</StartupObject>-->
+				<AssetTargetFallback>uap10.0.18362</AssetTargetFallback>	  
+				<StartupObject>ModernFlyouts.WPF.Program</StartupObject>
+		
+				<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
   </PropertyGroup>
+				
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutputPath>..\..\..\$(Platform)\$(Configuration)\WPF</OutputPath>
+    <Optimize>false</Optimize>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutputPath>..\..\..\$(Platform)\$(Configuration)\WPF</OutputPath>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+				
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <OutputPath>..\..\..\$(Platform)\$(Configuration)\WPF</OutputPath>
+    <Optimize>false</Optimize>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <OutputPath>..\..\..\$(Platform)\$(Configuration)\WPF</OutputPath>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+				
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|arm64'">
+    <OutputPath>..\..\..\$(Platform)\$(Configuration)\WPF</OutputPath>
+    <Optimize>false</Optimize>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|arm64'">
+    <OutputPath>..\..\..\$(Platform)\$(Configuration)\WPF</OutputPath>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="TrayFlyoutWindow.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="TrayFlyoutWindow.xaml" />
+  </ItemGroup>
 
 				<ItemGroup>
 								<PackageReference Include="Microsoft.Toolkit.UI.XamlHost" Version="6.1.2" />
@@ -27,9 +74,6 @@
 
 				<ItemGroup>
 				  <Page Update="FlyoutWindow.xaml">
-				    <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-				  </Page>
-				  <Page Update="TrayFlyoutWindow.xaml">
 				    <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
 				  </Page>
 				</ItemGroup>
