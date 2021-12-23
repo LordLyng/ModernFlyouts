@@ -7,7 +7,10 @@
 				<Platforms>x86;x64</Platforms>
 				<AssetTargetFallback>uap10.0.18362</AssetTargetFallback>	  
 				<StartupObject>ModernFlyouts.WPF.Program</StartupObject>
-		
+						
+						    <Win32Resource />
+    <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
+						<ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
 				<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
   </PropertyGroup>
@@ -52,7 +55,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="SystemTheme.cs" />
     <Compile Remove="TrayFlyoutWindow.xaml.cs" />
+    <Compile Remove="TrayIconManager.cs" />
+    <Compile Remove="UIManager.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -60,6 +66,11 @@
   </ItemGroup>
 
 				<ItemGroup>
+								<PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />
+								<PackageReference Include="Microsoft.AppCenter" Version="4.4.0" />
+								<PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.4.0" />
+								<PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.4.0" />
+								<PackageReference Include="Microsoft.AppCenter.Distribute" Version="4.4.0" />
 								<PackageReference Include="Microsoft.Toolkit.UI.XamlHost" Version="6.1.2" />
 								<PackageReference Include="Microsoft.Toolkit.Wpf.UI.Controls" Version="6.1.2" />
 								<PackageReference Include="Microsoft.Toolkit.Wpf.UI.XamlHost" Version="6.1.2" />

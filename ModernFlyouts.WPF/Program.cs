@@ -1,16 +1,20 @@
-﻿namespace ModernFlyouts.WPF
+﻿using System;
+using System.Diagnostics;
+using System.Windows;
+
+namespace ModernFlyouts.WPF
 {
   public class Program
   {
-    [System.STAThread()]
+    [STAThread]
     public static void Main()
     {
-      using (new ModernFlyouts.Settings.App())
-      {
+        using (new Settings.App())
+        {
                 App app = new App();
         app.InitializeComponent();
         app.Run();
-      }
+        }
     }
   }
 }

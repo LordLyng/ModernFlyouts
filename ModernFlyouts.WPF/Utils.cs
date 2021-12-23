@@ -9,7 +9,7 @@ namespace ModernFlyouts.WPF
 {
     internal class Utils
     {
-        private static string _placementPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Microsoft\PowerToys\settings-placement.json");
+        private static string _placementPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Microsoft\ModernFlyouts\settings-placement.json");
 
         public static void FitToScreen(Window window)
         {

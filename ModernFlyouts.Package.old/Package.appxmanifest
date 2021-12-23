@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap5="http://schemas.microsoft.com/appx/manifest/uap/windows10/5" xmlns:uap7="http://schemas.microsoft.com/appx/manifest/uap/windows10/7" xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" IgnorableNamespaces="uap uap5 uap7 desktop rescap">
+  <Identity Name="32669SamG.ModernFlyouts" Publisher="CN=samue" Version="0.9.610.0" />
+  <Properties>
+    <DisplayName>ms-resource:Resources/PackageDisplayName</DisplayName>
+    <PublisherDisplayName>ms-resource:Resources/PublisherDisplayName</PublisherDisplayName>
+    <Logo>Images\StoreLogo.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17763.0" MaxVersionTested="10.0.19041.0" />
+  </Dependencies>
+  <Resources>
+    <Resource Language="en-us" />
+    <Resource Language="en-GB" />
+    <Resource Language="af" />
+    <Resource Language="ar" />
+    <Resource Language="de" />
+    <Resource Language="el" />
+    <Resource Language="es" />
+    <Resource Language="fa" />
+    <Resource Language="fr" />
+    <Resource Language="he" />
+    <Resource Language="hi" />
+    <Resource Language="hu" />
+    <Resource Language="id" />
+    <Resource Language="is" />
+    <Resource Language="it" />
+    <Resource Language="ja" />
+    <Resource Language="ko" />
+    <Resource Language="ms" />
+    <Resource Language="nb" />
+    <Resource Language="nl" />
+    <Resource Language="pl" />
+    <Resource Language="pt" />
+    <Resource Language="ru" />
+    <Resource Language="sv" />
+    <Resource Language="tr" />
+    <Resource Language="uk" />
+    <Resource Language="vi" />
+    <Resource Language="zh-CN" />
+    <Resource Language="zh-TW" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Windows.FullTrustApplication">
+      <uap:VisualElements DisplayName="ms-resource:Resources/ApplicationDisplayName" Description="ms-resource:Resources/ApplicationDescription" BackgroundColor="transparent" Square150x150Logo="Images\Square150x150Logo.png" Square44x44Logo="Images\Square44x44Logo.png">
+        <uap:DefaultTile ShortName="ms-resource:Resources/TileShortName" Wide310x150Logo="Images\Wide310x150Logo.png" Square71x71Logo="Images\SmallTile.png" Square310x310Logo="Images\LargeTile.png">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo" />
+            <uap:ShowOn Tile="wide310x150Logo" />
+            <uap:ShowOn Tile="square310x310Logo" />
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile>
+        <uap:SplashScreen Image="Images\SplashScreen.png" />
+      </uap:VisualElements>
+      <Extensions>
+        <uap5:Extension Category="windows.startupTask" Executable="ModernFlyoutsHost.exe" EntryPoint="Windows.FullTrustApplication">
+          <uap5:StartupTask TaskId="ModernFlyoutsStartupId" Enabled="true" DisplayName="ModernFlyouts" />
+        </uap5:Extension>
+        <uap5:Extension Category="windows.startupTask" Executable="ModernFlyoutsTray.exe" EntryPoint="Windows.FullTrustApplication">
+          <uap5:StartupTask TaskId="ModernFlyoutsTrayStartupId" Enabled="true" DisplayName="ModernFlyoutsTray" />
+        </uap5:Extension>
+        <uap:Extension Category="windows.appService">
+          <uap:AppService Name="WPFInteropService" />
+        </uap:Extension>
+        <desktop:Extension Category="windows.fullTrustProcess" Executable="ModernFlyoutsHost.exe" EntryPoint="Windows.FullTrustApplication" />
+      </Extensions>
+      <!--<uap3:Extension
+    Category="windows.appExecutionAlias"
+    Executable="[ExecutableName]"
+    EntryPoint="Windows.FullTrustApplication">
+												<uap3:AppExecutionAlias>
+																<desktop:ExecutionAlias Alias="[AliasName]" />
+												</uap3:AppExecutionAlias>
+								</uap3:Extension>-->
+      <!--
+        <uap5:Extension
+            Category="windows.startupTask"
+            Executable="ModernFlyouts.Settings.exe"
+            EntryPoint="ModernFlyouts.Settings.App">
+										<uap5:StartupTask
+		TaskId="ModernFlyoutsStartupId"
+		Enabled="true"
+		DisplayName="ModernFlyouts" />
+										</uap5:Extension>-->
+      <!--<uap:Extension Category="windows.appService">
+			    <uap:AppService Name="SystrayExtensionService" />
+		    </uap:Extension>
+		    <desktop:Extension Category="windows.fullTrustProcess" Executable="Win32\SystrayComponent.exe" />
+	    </Extensions>
+	    -->
+      <!--change executable to our executable-->
+      <!--
+	    <desktop:Extension Category="windows.fullTrustProcess" Executable="Launcher\Launcher.exe">
+		    <desktop:FullTrustProcess>
+			    <desktop:ParameterGroup GroupId="Background" Parameters="/background" />
+			    <desktop:ParameterGroup GroupId="WPF" Parameters="/wpf" />
+			    <desktop:ParameterGroup GroupId="Win32" Parameters="/win32" />
+			    <desktop:ParameterGroup GroupId="Parameters" Parameters="/parameters" />
+		    </desktop:FullTrustProcess>
+	    </desktop:Extension>-->
+    </Application>
+  </Applications>
+  <Capabilities>
+    <rescap:Capability Name="runFullTrust" />
+    <!--<rescap:Capability Name="packageManagement" />-->
+    <!--<Capability Name="globalMediaControl" / >-->
+    <!--<rescap:Capability Name="extendedBackgroundTaskTime"/>-->
+    <!--<rescap:Capability Name="allowElevation"/>-->
+	<rescap:Capability Name="uiAccess" />
+	  <Capability Name="internetClient" />
+  </Capabilities>
+  <Metadata xmlns="http://schemas.microsoft.com/appx/developer/windowsTemplateStudio">
+    <Item Name="generator" Value="Windows Template Studio" />
+    <Item Name="projectType" Value="SplitView" />
+    <Item Name="framework" Value="MVVMToolkit" />
+    <Item Name="platform" Value="Uwp" />
+  </Metadata>
+</Package>

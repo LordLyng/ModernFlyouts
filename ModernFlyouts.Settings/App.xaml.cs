@@ -1,39 +1,6 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.IO;
-//using System.Linq;
-//using System.Runtime.InteropServices.WindowsRuntime;
-//using Windows.ApplicationModel;
-//using Windows.ApplicationModel.Activation;
-//using Windows.Foundation;
-//using Windows.Foundation.Collections;
-//using Windows.UI.Xaml;
-//using Windows.UI.Xaml.Controls;
-//using Windows.UI.Xaml.Controls.Primitives;
-//using Windows.UI.Xaml.Data;
-//using Windows.UI.Xaml.Input;
-//using Windows.UI.Xaml.Media;
-//using Windows.UI.Xaml.Navigation;
-
-
-//namespace ModernFlyouts.Settings
-//{
-//    public sealed partial class App : Microsoft.Toolkit.Win32.UI.XamlHost.XamlApplication
-//    {
-//        public App()
-//        {
-//            this.Initialize();
-//        }
-//    }
-//}
-
-
-using System;
+﻿using System;
 using System.Globalization;
 using System.Reflection;
-using Microsoft.AppCenter;
-using Microsoft.AppCenter.Analytics;
-using Microsoft.AppCenter.Crashes;
 using Microsoft.Toolkit.Win32.UI.XamlHost;
 using ModernFlyouts.Settings.Helpers;
 using ModernFlyouts.Settings.Services;
@@ -61,12 +28,10 @@ namespace ModernFlyouts.Settings
             var coreWindowInterop = Interop.GetInterop(coreWindow);
             NativeMethods.ShowWindow(coreWindowInterop.WindowHandle, Interop.SW_HIDE);
 
-            // TODO WTS: Add your app in the app center and set your secret here. More at https://docs.microsoft.com/appcenter/sdk/getting-started/uwp
-            AppCenter.Start("{Your App Secret}", typeof(Analytics), typeof(Crashes));
             UnhandledException += OnAppUnhandledException;
 
-            // Deferred execution until used. Check https://docs.microsoft.com/dotnet/api/system.lazy-1 for further info on Lazy<T> class.
-            _activationService = new Lazy<ActivationService>(CreateActivationService);
+            //// Deferred execution until used. Check https://docs.microsoft.com/dotnet/api/system.lazy-1 for further info on Lazy<T> class.
+            //_activationService = new Lazy<ActivationService>(CreateActivationService);
         }
 
         protected override async void OnLaunched(LaunchActivatedEventArgs args)
@@ -87,6 +52,7 @@ namespace ModernFlyouts.Settings
             // TODO WTS: Please log and handle the exception as appropriate to your scenario
             // For more info see https://docs.microsoft.com/uwp/api/windows.ui.xaml.application.unhandledexception
         }
+
 
         private ActivationService CreateActivationService()
         {
@@ -109,8 +75,52 @@ namespace ModernFlyouts.Settings
                 return string.Format($"{AppVersion.Major}.{AppVersion.Minor}.{AppVersion.Build}.{AppVersion.Revision}");
             }
         }
+
+
+        //        private MainWindow settingsWindow;
+
+        //        public bool ShowOobe { get; set; }
+
+        //        public Type StartupPage { get; set; } = typeof(Microsoft.PowerToys.Settings.UI.Views.GeneralPage);
+
+        //        public void OpenSettingsWindow(Type type)
+        //        {
+        //            if (settingsWindow == null)
+        //            {
+        //                settingsWindow = new MainWindow();
+        //            }
+        //            else if (settingsWindow.WindowState == WindowState.Minimized)
+        //            {
+        //                settingsWindow.WindowState = WindowState.Normal;
+        //            }
+
+        //            settingsWindow.Show();
+        //            settingsWindow.NavigateToSection(type);
+        //        }
+
+        //        private void InitHiddenSettingsWindow()
+        //        {
+        //            settingsWindow = new MainWindow();
+
+        //            Utils.ShowHide(settingsWindow);
+        //            Utils.CenterToScreen(settingsWindow);
+        //        }
+
+        //        private void Application_Startup(object sender, StartupEventArgs e)
+        //        {
+        //            if (!ShowOobe)
+        //            {
+        //                settingsWindow = new MainWindow();
+        //                settingsWindow.Show();
+        //                settingsWindow.NavigateToSection(StartupPage);
+        //            }
+        //        }
+
+
     }
 }
+
+
 
 
 //namespace ModernFlyouts.Settings

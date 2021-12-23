@@ -6,6 +6,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using ModernFlyouts.Settings;
+
 namespace ModernFlyouts.WPF
 {
     /// <summary>
@@ -13,72 +18,63 @@ namespace ModernFlyouts.WPF
     /// </summary>
     public partial class App : Application
     {
+        private SettingsWindow SettingsUIWindow;
+
+        public bool ShowOobe { get; set; }
+
+        public Type StartupPage { get; set; } = typeof(ModernFlyouts.Settings.Views.GeneralSettings);
+
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            // TODO WTS: Add your app in the app center and set your secret here. More at https://docs.microsoft.com/appcenter/sdk/getting-started/uwp
+            AppCenter.Start("{Your App Secret}", typeof(Analytics), typeof(Crashes));
+        }
+
+/////////////////////
+        public void OpenSettingsWindow(Type type)
+        {
+            if (SettingsUIWindow == null)
+            {
+                SettingsUIWindow = new SettingsWindow();
+            }
+            else if (SettingsUIWindow.WindowState == WindowState.Minimized)
+            {
+                SettingsUIWindow.WindowState = WindowState.Normal;
+            }
+
+            SettingsUIWindow.Show();
+            SettingsUIWindow.NavigateToSection(type);
+        }
+
+        private void InitHiddenSettingsWindow()
+        {
+            SettingsUIWindow = new SettingsWindow();
+
+            Utils.ShowHide(SettingsUIWindow);
+            Utils.CenterToScreen(SettingsUIWindow);
+        }
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            if (!ShowOobe)
+            {
+                SettingsUIWindow = new SettingsWindow();
+                SettingsUIWindow.Show();
+                SettingsUIWindow.NavigateToSection(StartupPage);
+            }
+            else
+            {
+                // Create the Settings window so that it's fully initialized and
+                // it will be ready to receive the notification if the user opens
+                // the Settings from the tray icon.
+                InitHiddenSettingsWindow();
+
+                //OobeWindow oobeWindow = new OobeWindow();
+                //oobeWindow.Show();
+            }
+        }
+
     }
 }
-
-
-
-//using System;
-//using System.Windows;
-//using Microsoft.PowerToys.Settings.UI.Library.Telemetry.Events;
-//using Microsoft.PowerToys.Telemetry;
-
-//namespace PowerToys.Settings
-//{
-//    /// <summary>
-//    /// Interaction logic for App.xaml.
-//    /// </summary>
-//    public partial class App : Application
-//    {
-//        private MainWindow settingsWindow;
-
-//        public bool ShowOobe { get; set; }
-
-//        public Type StartupPage { get; set; } = typeof(Microsoft.PowerToys.Settings.UI.Views.GeneralPage);
-
-//        public void OpenSettingsWindow(Type type)
-//        {
-//            if (settingsWindow == null)
-//            {
-//                settingsWindow = new MainWindow();
-//            }
-//            else if (settingsWindow.WindowState == WindowState.Minimized)
-//            {
-//                settingsWindow.WindowState = WindowState.Normal;
-//            }
-
-//            settingsWindow.Show();
-//            settingsWindow.NavigateToSection(type);
-//        }
-
-//        private void InitHiddenSettingsWindow()
-//        {
-//            settingsWindow = new MainWindow();
-
-//            Utils.ShowHide(settingsWindow);
-//            Utils.CenterToScreen(settingsWindow);
-//        }
-
-//        private void Application_Startup(object sender, StartupEventArgs e)
-//        {
-//            if (!ShowOobe)
-//            {
-//                settingsWindow = new MainWindow();
-//                settingsWindow.Show();
-//                settingsWindow.NavigateToSection(StartupPage);
-//            }
-//            else
-//            {
-//                PowerToysTelemetry.Log.WriteEvent(new OobeStartedEvent());
-
-//                // Create the Settings window so that it's fully initialized and
-//                // it will be ready to receive the notification if the user opens
-//                // the Settings from the tray icon.
-//                InitHiddenSettingsWindow();
-
-//                OobeWindow oobeWindow = new OobeWindow();
-//                oobeWindow.Show();
-//            }
-//        }
-//    }
-//}
