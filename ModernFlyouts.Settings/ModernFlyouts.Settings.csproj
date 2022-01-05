@@ -437,12 +437,6 @@
       <Name>Windows Desktop Extensions for the UWP</Name>
     </SDKReference>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ModernFlyouts.Settings.Core\ModernFlyouts.Settings.Core.csproj">
-      <Project>{65616468-f7d1-41f6-a9e8-ba7287ae2682}</Project>
-      <Name>ModernFlyouts.Settings.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
