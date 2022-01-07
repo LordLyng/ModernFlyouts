@@ -1,5 +1,5 @@
 ﻿using Microsoft.Toolkit.Uwp.Notifications;
-
+using System;
 using Windows.UI.Notifications;
 
 namespace ModernFlyouts.Settings.Services
@@ -8,7 +8,9 @@ namespace ModernFlyouts.Settings.Services
     {
         public void ShowToastNotificationSample()
         {
+
             // Create the toast content
+
             var content = new ToastContent()
             {
                 // More about the Launch property at https://docs.microsoft.com/dotnet/api/microsoft.toolkit.uwp.notifications.toastcontent
@@ -18,16 +20,25 @@ namespace ModernFlyouts.Settings.Services
                 {
                     BindingGeneric = new ToastBindingGeneric()
                     {
+                        HeroImage = new ToastGenericHeroImage()
+                        {
+                            Source = "ms-appx:///Assets/Hero.png"
+                        },
+
                         Children =
                         {
+                            new AdaptiveImage()
+                            {
+                                Source = "ms-appx:///Assets/Hero.png"
+                            },
                             new AdaptiveText()
                             {
-                                Text = "Sample Toast Notification"
+                                Text = "Sample Toast Welcome to ModernFlyouts"
                             },
 
                             new AdaptiveText()
                             {
-                                 Text = @"Click OK to see how activation from a toast notification can be handled in the ToastNotificationService."
+                                 Text = @"Click OK to to learn how to customise your flyouts and start setting up ModernFlyouts."
                             }
                         }
                     }

@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>ModernFlyouts.Settings.Core</RootNamespace>
+    <RootNamespace>ModernFlyouts.Core</RootNamespace>
+	<Platforms>x64;x86;ARM64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>

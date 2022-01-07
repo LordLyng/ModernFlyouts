@@ -61,6 +61,7 @@
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.194" PrivateAssets="all" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ModernFlyouts.Settings\ModernFlyouts.Settings.csproj" />
     <ProjectReference Include="..\ModernFlyouts.WPF\ModernFlyouts.WPF.csproj" />
   </ItemGroup>
 </Project>

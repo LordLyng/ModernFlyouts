@@ -18,11 +18,18 @@ namespace ModernFlyouts.Settings.Views
     {
         public ShellViewModel ViewModel { get; } = new ShellViewModel();
 
+        /// <summary>
+        /// Gets or sets a shell handler to be used to update contents of the shell dynamically from page within the frame.
+        /// </summary>
+        public static ShellPage ShellHandler { get; set; }
+
         public ShellPage()
         {
             InitializeComponent();
             DataContext = ViewModel;
+            ShellHandler = this;
             ViewModel.Initialize(shellFrame, navigationView, KeyboardAccelerators);
+            //shellFrame.Navigate(typeof(GeneralSettingsPage));
 
             var titleBar = ApplicationView.GetForCurrentView().TitleBar;
 

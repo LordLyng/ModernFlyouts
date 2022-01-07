@@ -24,7 +24,7 @@
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
 
-            <ResourceDictionary.ThemeDictionaries>
+            <!--<ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Light">
                     <SolidColorBrush x:Key="HomePageBackgroundBrush" Color="Transparent"/>
                     <SolidColorBrush x:Key="PageHeaderForegroundBrush" Color="White"/>
@@ -46,7 +46,7 @@
                     <Thickness x:Key="ControlExampleDisplayBorderThickness">1</Thickness>
                     <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent"/>
                 </ResourceDictionary>
-            </ResourceDictionary.ThemeDictionaries>
+            </ResourceDictionary.ThemeDictionaries>-->
 
 
             <Thickness x:Key="InfoBarIconMargin">6,16,16,16</Thickness>
@@ -61,13 +61,13 @@
 
             <CornerRadius x:Key="ControlCornerRadius">4</CornerRadius>
 
-            <!--  Breakpoints  -->
+              <!--Breakpoints-->  
             <x:Double x:Key="Breakpoint640Plus">641</x:Double>
 
             <Thickness x:Key="PageHeaderDefaultPadding">0</Thickness>
             <Thickness x:Key="PageHeaderMinimalPadding">-4,0,12,0</Thickness>
 
-            <!-- L-Pattern Overwriting resources -->
+             <!--L-Pattern Overwriting resources--> 
             <Thickness x:Key="NavigationViewContentMargin">0,48,0,0</Thickness>
             <Thickness x:Key="NavigationViewContentGridBorderThickness">1,1,0,0</Thickness>
             <CornerRadius x:Key="NavigationViewContentGridCornerRadius">8,0,0,0</CornerRadius>
